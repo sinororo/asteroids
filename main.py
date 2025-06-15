@@ -8,8 +8,11 @@ def main():
     clock = pygame.time.Clock()
     dt=0
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+    
     player = Player(x=SCREEN_WIDTH/2, y=SCREEN_HEIGHT/2)
-
 
     running = True
     while running:
@@ -24,9 +27,10 @@ def main():
         # fill the screen with a color to wipe away anything from last frame
         screen.fill('black')
 
-        player.draw(screen)
+        for i in drawable:
+            i.draw(screen)
 
-        player.update(dt)
+        updatable.update(dt)
 
         # RENDER YOUR GAME HERE
 
