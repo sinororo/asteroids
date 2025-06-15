@@ -26,6 +26,8 @@ def main():
 
         player.draw(screen)
 
+        player.update(dt)
+
         # RENDER YOUR GAME HERE
 
         # flip() the display to put your work on screen
