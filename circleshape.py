@@ -21,5 +21,5 @@ class CircleShape(pygame.sprite.Sprite):
                             width=2)
 
     def update(self, dt):
-        # sub-classes must override
         pass
+        # sub-classes must override

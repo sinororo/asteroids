@@ -1,6 +1,9 @@
 import pygame
 from constants import *
 from player import *
+from asteroids import *
+from asteroidfield import *
+
 def main():
 
     pygame.init()
@@ -10,9 +13,13 @@ def main():
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
     
     player = Player(x=SCREEN_WIDTH/2, y=SCREEN_HEIGHT/2)
+    asteroid_field=AsteroidField()
 
     running = True
     while running:
@@ -27,12 +34,12 @@ def main():
         # fill the screen with a color to wipe away anything from last frame
         screen.fill('black')
 
+
+        # RENDER YOUR GAME HERE
         for i in drawable:
             i.draw(screen)
 
         updatable.update(dt)
-
-        # RENDER YOUR GAME HERE
 
         # flip() the display to put your work on screen
         pygame.display.flip()
